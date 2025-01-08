@@ -1,0 +1,35 @@
+//
+// named.conf
+//
+// Provided by Red Hat bind package to configure the ISC BIND named(8) DNS
+// server as a caching only nameserver (as a localhost DNS resolver only).
+//
+// See /usr/share/doc/bind*/sample/ for example named configuration files.
+//
+
+##   tls <string> {
+##   	ca-file <quoted_string>;
+##   	cert-file <quoted_string>;
+##   	ciphers <string>;
+##   	dhparam-file <quoted_string>;
+##   	key-file <quoted_string>;
+##   	prefer-server-ciphers <boolean>;
+##   	protocols { <string>; ... };
+##   	remote-hostname <quoted_string>;
+##   	session-tickets <boolean>;
+##   }; // may occur multiple times
+
+tls local-tls {
+##   	ca-file <quoted_string>;
+##   	cert-file <quoted_string>;
+    cert-file "/etc/pki/tls/certs/bind.crt";
+##   	ciphers <string>;
+##   	dhparam-file <quoted_string>;
+    dhparam-file "/etc/pki/tls/certs/bind.pem";
+##   	key-file <quoted_string>;
+    key-file "/etc/pki/tls/private/bind.key";
+##   	prefer-server-ciphers <boolean>;
+##   	protocols { <string>; ... };
+##   	remote-hostname <quoted_string>;
+##   	session-tickets <boolean>;
+}; // may occur multiple times
